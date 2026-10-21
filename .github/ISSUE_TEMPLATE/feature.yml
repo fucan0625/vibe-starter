@@ -1,0 +1,28 @@
+name: 기능 요청 (사용자 스토리)
+description: 만들 기능 하나를 스토리와 수용 기준으로 적어요. 에이전트에게 맡길 때 이 이슈를 그대로 줘요.
+title: "기능: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: 사용자 스토리
+      description: 나는 [누구]로서, [하고 싶은 일]을 하고 싶어요. 그래야 [얻는 것].
+      placeholder: 나는 급식을 확인하는 학생으로서, 다음 주 급식도 보고 싶어요. 그래야 주말에 미리 계획할 수 있어요.
+    validations:
+      required: true
+  - type: textarea
+    id: criteria
+    attributes:
+      label: 수용 기준 (Given, When, Then)
+      description: 이게 되면 다 됐다고 할 수 있는 조건이에요. 눌러서 확인할 수 있게 써요. "예쁘게", "빠르게"는 쓰지 않아요.
+      placeholder: |
+        1. 이번 주 급식이 보이는 상태에서 / '다음 주'를 누르면 / 다음 주 월~금 날짜 버튼이 나와요
+        2. 급식이 없는 날을 누르면 / '급식이 없어요'가 나와요
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: 범위 밖, 참고
+      description: 이번에 하지 않을 것, 에이전트가 건드리면 안 되는 곳

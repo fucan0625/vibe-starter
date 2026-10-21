@@ -1,0 +1,46 @@
+name: 버그 리포트
+description: 받은 사람이 그대로 따라 하면 같은 버그가 나오게 적어요.
+title: "버그: "
+labels: ["bug"]
+body:
+  - type: input
+    id: env
+    attributes:
+      label: 환경
+      placeholder: 노트북, 크롬, 공개 주소 / 휴대폰, 사파리
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 재현 순서
+      placeholder: |
+        1. 
+        2. 
+        3. 
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대한 것
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 실제로 일어난 것
+      description: 오류 문구가 있으면 그대로 붙여 넣어요. 원인 짐작은 맨 아래에 따로 적어요.
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 심각도
+      options:
+        - 치명 (앱을 쓸 수 없어요)
+        - 높음 (주요 기능이 틀려요)
+        - 보통 (불편하지만 쓸 수 있어요)
+        - 낮음 (글자, 모양)
+    validations:
+      required: true

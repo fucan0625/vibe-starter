@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>내 앱이 들어갈 자리</title>
+<style>
+  :root { --ink: #1c1917; --mute: #57534e; --acc: #37f712; --bg: #fafaf9; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100dvh; display: grid; place-items: center; background: var(--bg); color: var(--ink);
+         font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif; line-height: 1.6; word-break: keep-all; }
+  main { width: min(560px, 100% - 32px); padding: 32px 0; }
+  .tag { display: inline-block; background: var(--acc); font: 700 13px/1.6 Consolas, "SFMono-Regular", monospace; padding: 0 6px; }
+  h1 { font-size: clamp(26px, 6vw, 36px); line-height: 1.25; margin: 12px 0 8px; letter-spacing: -0.02em; }
+  p { color: var(--mute); margin: 0 0 12px; }
+  ol { padding-left: 1.3em; margin: 16px 0 0; }
+  li + li { margin-top: 6px; }
+  code { font-family: Consolas, "SFMono-Regular", monospace; background: #e7e5e4; padding: 0 4px; border-radius: 2px; }
+</style>
+</head>
+<body>
+<main>
+  <span class="tag">v0.0</span>
+  <h1>여기에 내 앱이 들어가요</h1>
+  <p>이 화면이 인터넷에서 보이면 GitHub Pages가 잘 켜진 거예요.</p>
+  <ol>
+    <li>바이브랩에서 <b>HTML 파일로 받기</b>로 받은 파일 이름을 <code>index.html</code>로 바꿔요</li>
+    <li>이 저장소 폴더의 <code>index.html</code>을 그 파일로 바꿔 넣어요</li>
+    <li>커밋하고 푸시하면 1~2분 뒤 이 주소에 내 앱이 나와요</li>
+  </ol>
+</main>
+</body>
+</html>
