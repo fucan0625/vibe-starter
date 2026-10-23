@@ -35,12 +35,9 @@
 -
 ### v0.5
 -
-### v0.2 바이브랩에서 독립
-- 라이브러리 주소를 jsDelivr로, vibe.js를 vibe-local.js로 바꾸고, 앱 속 AI는 안내 문구로 (첫 수정)
 ### v0.1 첫 버전
-- 바이브랩 AI 자동 빌드로 만든 첫 버전
+- Copilot 에이전트로 만든 첫 버전
 
 ## 만든 방법
-- v0.1: 바이브랩 (AI 자동 빌드)
-- 그다음부터: VS Code와 GitHub Copilot 에이전트. 에이전트 규칙은 [AGENTS.md](AGENTS.md)
-- 바이브랩 밖에서 쓰는 저장과 학교 정보: [vibe-local.js](vibe-local.js)
+- VS Code와 GitHub Copilot 에이전트로 만들어요. 에이전트 규칙은 [AGENTS.md](AGENTS.md)에 있어요.
+- 저장과 학교 정보는 [vibe-local.js](vibe-local.js)를 써요.

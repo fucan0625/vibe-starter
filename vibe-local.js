@@ -1,6 +1,6 @@
-/* vibe-local.js — 바이브랩 밖(GitHub Pages · 내 컴퓨터)에서 쓰는 vibe
-   바이브랩에서 받은 앱의 <script src="https://vibelab-camp.web.app/lib/vibe.js"> 를
-   <script src="vibe-local.js"> 로 바꾸면 같은 이름으로 동작한다.
+/* vibe-local.js — 저장과 학교 정보(나이스)를 쉽게 쓰게 해 주는 작은 도구
+   index.html 에서 앱 스크립트보다 먼저 <script src="vibe-local.js"></script> 로 불러온다.
+   GitHub Pages(공개 주소)와 내 컴퓨터 미리보기에서 똑같이 동작한다.
 
    await vibe.save("키", 값) · await vibe.load("키")   → 이 기기(브라우저)에만 저장 (localStorage)
    await vibe.share.add("목록", {...}) · .list("목록")  → 이 기기 안 목록 (반 친구와 공유되지 않는다)
@@ -128,7 +128,7 @@
     }),
   };
 
-  var noAi = function () { return Promise.reject(new Error("AI 기능은 바이브랩 안에서만 돼요. 공개 사이트에는 AI 키를 넣을 수 없어요.")); };
+  var noAi = function () { return Promise.reject(new Error("공개 사이트에는 AI 키를 넣을 수 없어서 앱 속 AI는 쓸 수 없어요.")); };
 
   window.vibe = {
     inLab: false,

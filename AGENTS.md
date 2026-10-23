@@ -28,32 +28,33 @@
 - 이름 · 연락처 · 학번 · 사진 같은 개인정보를 모으거나 코드에 넣지 않는다.
 - 다른 사이트의 정보를 몰래 긁어 오거나, 남의 계정 · 시스템에 접근하는 코드를 쓰지 않는다.
 
-## 바이브랩에서 가져온 코드 (vibe.*)
-바이브랩의 「HTML 파일로 받기」로 받은 앱은 바이브랩 주소의 라이브러리와 `vibe.js`를 불러온다.
-"바이브랩에서 독립시켜 줘" 라는 요청을 받으면 다음 세 가지만 한다.
+## 첫 버전 만들기
+템플릿의 안내 화면(`index.html`, v0.0)을 주인의 첫 앱으로 바꿔 달라는 요청을 받으면 이렇게 한다.
+- `README.md`의 「명세」(문제, 사용자 스토리, 수용 기준, 범위 밖)를 먼저 읽는다. 명세가 비어 있으면 만들지 말고 주인에게 채워 달라고 한다.
+- S1, S2를 먼저 만들고, S3는 시간이 남으면 만든다. 「범위 밖」에 적힌 것은 만들지 않는다.
+- 화면은 `index.html` 한 파일에 HTML · CSS · JS를 함께 쓴다. 안내 화면을 첫 버전으로 바꿀 때만 `index.html` 전체를 새로 쓰고, 그다음부터는 바꿀 곳만 고친다.
+- 저장과 학교 정보는 `vibe-local.js`로 한다. `<script src="vibe-local.js"></script>`를 앱 스크립트보다 먼저 넣는다.
+  - `await vibe.save("키", 값)` · `await vibe.load("키")` → 이 기기(브라우저)에만 저장된다.
+  - `await vibe.share.add("목록", {...})` · `await vibe.share.list("목록")` → 이 기기 안 목록이다(반 친구와 공유되지 않는다). 화면에 "이 기기에만 저장돼요" 같은 안내를 한 줄 넣는다.
+  - `await vibe.school.meal("2026-10-26")` · `await vibe.school.timetable({ grade, classNo, date })` · `await vibe.school.schedule({ from, to })` → 나이스 급식 · 시간표 · 학사일정을 직접 부른다. 인증키 없이 한 번에 5줄이라 **시간표는 1~5교시까지만** 온다. 6교시 이후가 비면 화면에 그 까닭을 적는다. 키를 넣지 않는다.
+- 앱 속 AI(`vibe.ai`, `vibe.agent`)는 공개 사이트에서 쓸 수 없다(AI는 키와 서버가 필요하다). 규칙으로 흉내 낼 수 있으면 그렇게 하고, 아니면 「범위 밖」으로 돌리고 주인에게 알린다.
+- 끝나면 수용 기준마다 주인이 직접 눌러 확인할 방법을 알려 주고, 커밋 메시지 `v0.1 첫 버전`을 제안한다.
 
-**1. 라이브러리 주소 바꾸기** — 같은 버전, 같은 파일이다.
+## 쓸 수 있는 라이브러리
+「코드 규칙」의 '아래 표'가 이 표다. 모두 jsDelivr의 고정 버전 주소다.
 
-| 바이브랩 주소 (`https://vibelab-camp.web.app` 뒤) | 바꿀 주소 |
+| 라이브러리 (쓰임) | 주소 |
 |---|---|
-| `/lib/three/three.module.min.js` | `https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js` |
-| `/lib/three/addons/` | `https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/` |
-| `/lib/chart.umd.js` | `https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.js` |
-| `/lib/Tone.js` | `https://cdn.jsdelivr.net/npm/tone@15.1.22/build/Tone.js` |
-| `/lib/p5.min.js` | `https://cdn.jsdelivr.net/npm/p5@1.11.13/lib/p5.min.js` |
-| `/lib/phaser.min.js` | `https://cdn.jsdelivr.net/npm/phaser@3.90.0/dist/phaser.min.js` |
-| `/lib/matter.min.js` | `https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js` |
-| `/lib/confetti.browser.js` | `https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.js` |
+| three.js (3D) | `https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js` |
+| three.js 부가 기능 (카메라 조작, 모델 불러오기) | `https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/` |
+| Chart.js (차트, 그래프) | `https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.js` |
+| Tone.js (소리, 음악) | `https://cdn.jsdelivr.net/npm/tone@15.1.22/build/Tone.js` |
+| p5.js (그림, 애니메이션) | `https://cdn.jsdelivr.net/npm/p5@1.11.13/lib/p5.min.js` |
+| Phaser (2D 게임) | `https://cdn.jsdelivr.net/npm/phaser@3.90.0/dist/phaser.min.js` |
+| Matter.js (2D 물리) | `https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js` |
+| canvas-confetti (축하 효과) | `https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.js` |
 
-**2. vibe.js를 vibe-local.js 로** — `<script src="https://vibelab-camp.web.app/lib/vibe.js"></script>`를
-`<script src="vibe-local.js"></script>`로 바꾼다. 함수 이름이 같아서 나머지 코드는 그대로 둔다.
-- `vibe.save` · `vibe.load` → 이 기기에 저장된다. 그대로 둔다.
-- `vibe.share.add` · `vibe.share.list` → 이 기기 안 목록이 된다(반 친구와 공유되지 않는다). 화면에 "이 기기에만 저장돼요" 같은 안내를 한 줄 넣는다.
-- `vibe.school.*` → 나이스를 직접 부른다. 인증키 없이 한 번에 5줄이라 **시간표는 1~5교시까지만** 온다. 6교시 이후가 비면 화면에 그 까닭을 적는다. 키를 넣지 않는다.
-- `vibe.ai` · `vibe.agent` → 공개 사이트에서는 쓸 수 없다(AI 는 키와 서버가 필요하다). 그 기능의 단추를 숨기거나 "바이브랩에서만 되는 기능" 안내로 바꾸고, 규칙으로 흉내 낼 수 있으면 그렇게 한다. 다른 기능은 그대로 돌아야 한다.
-
-**3. 확인** — 고친 뒤 콘솔 오류가 없는지, README 수용 기준이 그대로 되는지 주인에게 확인 방법을 알려 준다.
-남은 `vibelab-camp.web.app` 주소가 없어야 한다.
+three.js는 모듈이라 `<script type="importmap">`으로 `"three"`와 `"three/addons/"`를 위 두 주소에 이어 쓴다.
 
 ## 내 규칙 (주인이 쓴다)
 - 
